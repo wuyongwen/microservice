@@ -1,0 +1,4 @@
+{
+  "openid": "${openid}", 
+  "to_groupid": "${to_groupid}"
+}

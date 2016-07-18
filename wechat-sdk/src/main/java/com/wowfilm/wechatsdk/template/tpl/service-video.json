@@ -1,0 +1,10 @@
+{
+  "touser": "${touser}", 
+  "msgtype": "video", 
+  "video": {
+    "media_id": "${media_id}", 
+    "thumb_media_id": "${thumb_media_id}", 
+    "title": "${title}", 
+    "description": "${description}"
+  }
+}

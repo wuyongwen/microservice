@@ -1,0 +1,7 @@
+{
+  "touser": "${touser}", 
+  "msgtype": "news", 
+  "news": {
+    "articles": [${articles}]
+  }
+}

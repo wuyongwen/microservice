@@ -1,0 +1,6 @@
+<item>
+	<Title><![CDATA[${Title}]]></Title>
+	<Description><![CDATA[${Description}]]></Description>
+	<PicUrl><![CDATA[${PicUrl}]]></PicUrl>
+	<Url><![CDATA[${Url}]]></Url>
+</item>
