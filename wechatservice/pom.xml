@@ -11,8 +11,6 @@
     <packaging>war</packaging>
     <name>wechatservice Maven Webapp</name>
     <url>http://maven.apache.org</url>
-
-
     <dependencies>
         <!-- 引入核心模块 -->
         <dependency>

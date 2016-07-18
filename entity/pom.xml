@@ -8,9 +8,24 @@
         <version>2.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <properties>
+        <jackson.library>2.7.5</jackson.library>
+    </properties>
     <groupId>com.wowfilm</groupId>
     <artifactId>entity</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.library}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.library}</version>
+        </dependency>
+
+    </dependencies>
 
 
 </project>

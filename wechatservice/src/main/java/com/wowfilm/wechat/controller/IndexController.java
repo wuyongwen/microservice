@@ -1,7 +1,13 @@
 package com.wowfilm.wechat.controller;
 
 import com.wowfilm.entity.wechat.Test;
+import com.wowfilm.entity.wechat.WxPlatformInfo;
+import com.wowfilm.wechat.service.WxPlatformInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import static org.apache.coyote.http11.Constants.a;
 
 /**
  * Created by wen on 2016/7/11.
@@ -10,15 +16,21 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 public class IndexController {
+
+    @Autowired
+    WxPlatformInfoService wxPlatformInfoService;
+
     @RequestMapping("/test")
-    public Test test() {
-        Test test = new Test();
-        test.setId(1);
-        test.setName("name");
-        return test;
+    @ResponseStatus(HttpStatus.OK)
+    public WxPlatformInfo test() {
+
+        WxPlatformInfo wxPlatformInfo = wxPlatformInfoService.getPlatformInfo("1");
+
+        return wxPlatformInfo;
     }
 
     @RequestMapping("/testparam")
+    @ResponseStatus(HttpStatus.OK)
     public Test testParam(@RequestParam String name, @RequestParam int id) {
         Test test = new Test();
         test.setId(id);
