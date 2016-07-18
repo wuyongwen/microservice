@@ -35,8 +35,8 @@ public class PlatFormTokenAccessor {
 		return preAuthRefresher;
 	}
 	public void setPlatformConfigStorage(PlatformConfigStorage storage){
-		refresher.setStorage(storage);
-		preAuthRefresher.setStorage(storage);
+		getRefresher().setStorage(storage);
+		getPreAuthRefresher().setStorage(storage);
 	}
 	public void setPreAuthRefresher(Refresher<String> preAuthRefresher) {
 		this.preAuthRefresher = preAuthRefresher;
