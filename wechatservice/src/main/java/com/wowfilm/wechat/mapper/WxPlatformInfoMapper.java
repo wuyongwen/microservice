@@ -12,5 +12,6 @@ public interface WxPlatformInfoMapper {
 
     public void update(WxPlatformInfo wxPlatformInfo);
 
-    public void save(WxPlatformInfo wxPlatformInfo);
+    public Long save(WxPlatformInfo wxPlatformInfo);
+
 }

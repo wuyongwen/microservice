@@ -1,6 +1,4 @@
-package com.wowfilm.wechatsdk.api;
-
-import com.wowfilm.wechatsdk.store.PlatformConfigStorage;
+package com.wowfilm.wechatsdk.store;
 
 import java.io.File;
 import javax.net.ssl.SSLContext;

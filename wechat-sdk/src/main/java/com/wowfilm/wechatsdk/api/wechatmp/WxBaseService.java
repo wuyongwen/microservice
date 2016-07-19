@@ -1,7 +1,7 @@
 package com.wowfilm.wechatsdk.api.wechatmp;
 
 
-import com.wowfilm.wechatsdk.api.WxMpConfigStorage;
+import com.wowfilm.wechatsdk.store.WxMpConfigStorage;
 
 
 /**

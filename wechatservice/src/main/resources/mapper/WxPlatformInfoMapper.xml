@@ -25,6 +25,9 @@
         PreAuthCodeExpiresOut = #{preAuthCodeExpiresOut} where id = #{id}
     </update>
     <insert id="save" parameterType="com.wowfilm.entity.wechat.WxPlatformInfo">
+        <selectKey keyProperty="id" resultType="long" order="AFTER" >
+            SELECT LAST_INSERT_ID() as id
+        </selectKey>
         insert into WxPlatformInfo(AppId,ComponentVerifyTicket,TicketCreateTime,ComponentAccessToken,TokenExpiresOut
         ,PreAuthCode,PreAuthCodeExpiresOut) VALUES (#{appId},#{componentVerifyTicket},#{ticketCreateTime},#{componentAccessToken},
         #{tokenExpiresOut},#{preAuthCode},#{preAuthCodeExpiresOut})

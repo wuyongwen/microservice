@@ -24,4 +24,8 @@ public class App {
 
         Info.defaultTicket = cfg.get("weixin.default.componentverifyticket");
     }
+
+    public static AppInfo getInfo() {
+        return Info;
+    }
 }

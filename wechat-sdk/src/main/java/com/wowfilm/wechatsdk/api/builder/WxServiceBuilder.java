@@ -1,8 +1,6 @@
 package com.wowfilm.wechatsdk.api.builder;
 
-import com.wowfilm.wechatsdk.api.WxMpConfigStorage;
-import com.wowfilm.wechatsdk.api.paltform.PlatFormManager;
-import com.wowfilm.wechatsdk.api.paltform.PlatFormManagerImp;
+import com.wowfilm.wechatsdk.store.WxMpConfigStorage;
 import com.wowfilm.wechatsdk.api.wechatmp.*;
 /**
  * 微信服务获取类
