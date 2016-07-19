@@ -25,7 +25,10 @@ public class IndexController {
     public WxPlatformInfo test() {
 
         WxPlatformInfo wxPlatformInfo = wxPlatformInfoService.getPlatformInfo("1");
-
+//        wxPlatformInfo.setAppId("2");
+//        wxPlatformInfo.setComponentAccessToken("logging.level.root");
+//        wxPlatformInfo.setPreAuthCode("server.port ");
+//        wxPlatformInfoService.save(wxPlatformInfo);
         return wxPlatformInfo;
     }
 

@@ -18,5 +18,7 @@ public class WxPlatformInfoService {
     public WxPlatformInfo getPlatformInfo(String appId){
         return wxPlatformInfoMapper.findByAppId(appId);
     }
-
+    public void save(WxPlatformInfo wxPlatformInfo){
+        wxPlatformInfoMapper.save(wxPlatformInfo);
+    }
 }
