@@ -1,7 +1,8 @@
 package com.wowfilm.wechat.wxservices;
 
-import com.chn.wx.dto.Context;
-import com.chn.wx.listener.impl.service.end.event.UpdateAuthorizedAdapter;
+import com.wowfilm.wechatsdk.dto.Context;
+import com.wowfilm.wechatsdk.listener.impl.service.end.event.UpdateAuthorizedAdapter;
+
 /**
  * 更新授权通知
  * @author wuyongwen
