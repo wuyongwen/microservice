@@ -20,5 +20,6 @@
     </typeAliases>
     <mappers>
         <mapper resource="mapper/WxPlatformInfoMapper.xml"/>
+        <mapper resource="mapper/WxMpAppMapper.xml"/>
     </mappers>
 </configuration>

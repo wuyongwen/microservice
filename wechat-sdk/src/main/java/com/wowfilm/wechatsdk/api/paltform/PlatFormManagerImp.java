@@ -1,6 +1,8 @@
 package com.wowfilm.wechatsdk.api.paltform;
 
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +17,7 @@ import org.apache.log4j.Logger;
 
 import com.alibaba.fastjson.JSON;
 
+import static com.alibaba.fastjson.JSON.toJSONString;
 import static com.wowfilm.wechatsdk.common.StringTemplate.compile;
 
 /**
@@ -57,10 +60,17 @@ public class PlatFormManagerImp implements PlatFormManager {
 		this.platFormTokenAccessor = platFormTokenAccessor;
 	}
 	@Override
-	public String getLoginUrl(String url) {
+	public String getLoginUrl(Map requestParam) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("component_appid", App.Info.id);
 		params.put("pre_auth_code", this.getPreAuthCode());
+		String jsonParam = JSON.toJSONString(requestParam);
+		String url = App.Info.loginedUrl;
+		try {
+			url +="?backParam="+ URLEncoder.encode(jsonParam,"utf-8");
+		} catch (UnsupportedEncodingException e) {
+			log.error("参数转换错误!",e);
+		}
 		params.put("loogined_redirect_url", url);
 		return getLoginUrl.replace(params);
 	}

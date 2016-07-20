@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+       Copyright 2015-2016 the original author or authors.
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wowfilm.wechat.mapper.WxMpAppMapper">
+
+    <resultMap id="BaseResultMap" type="com.wowfilm.entity.wechat.WxMpApp" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="AuthorizerAppid" property="authorizerappid" jdbcType="VARCHAR" />
+        <result column="Nnauthorized" property="nnauthorized" jdbcType="SMALLINT" />
+        <result column="AuthorizerAccessToken" property="authorizeraccesstoken" jdbcType="VARCHAR" />
+        <result column="TokenExpiresOut" property="tokenexpiresout" jdbcType="TIMESTAMP" />
+        <result column="AuthorizerRefreshToken" property="authorizerrefreshtoken" jdbcType="VARCHAR" />
+        <result column="FuncInfo" property="funcinfo" jdbcType="VARCHAR" />
+        <result column="NickName" property="nickname" jdbcType="VARCHAR" />
+        <result column="HeadImg" property="headimg" jdbcType="VARCHAR" />
+        <result column="ServiceTypeInfo" property="servicetypeinfo" jdbcType="INTEGER" />
+        <result column="VerifyTypeInfo" property="verifytypeinfo" jdbcType="INTEGER" />
+        <result column="UserName" property="username" jdbcType="VARCHAR" />
+        <result column="BusinessInfo" property="businessinfo" jdbcType="VARCHAR" />
+        <result column="OpenShake" property="openshake" jdbcType="VARCHAR" />
+        <result column="Alias" property="alias" jdbcType="VARCHAR" />
+        <result column="QrcodeUrl" property="qrcodeurl" jdbcType="VARCHAR" />
+        <result column="LocalqrcodePath" property="localqrcodepath" jdbcType="VARCHAR" />
+        <result column="IsMenuOpern" property="ismenuopern" jdbcType="SMALLINT" />
+        <result column="SelfMenuInfo" property="selfmenuinfo" jdbcType="LONGVARCHAR" />
+        <result column="ConfMenuInfo" property="confmenuinfo" jdbcType="LONGVARCHAR" />
+    </resultMap>
+</mapper>

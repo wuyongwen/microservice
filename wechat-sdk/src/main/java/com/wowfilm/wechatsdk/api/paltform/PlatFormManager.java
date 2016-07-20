@@ -2,14 +2,26 @@ package com.wowfilm.wechatsdk.api.paltform;
 
 import com.wowfilm.wechatsdk.entity.platform.*;
 
+import java.util.Map;
+
 /**
  * 微信平台接口
  * @author wuyongwen
  * @Date 2016年3月22日上午10:35:19
  */
 public interface PlatFormManager {
+	/**
+	 * 获取授权登录URL+回调地址
+	 * @return
+     */
 	public String getLoginUrl();
-	public String getLoginUrl(String rediredtUrl);
+
+	/**
+	 * 获取授权登录URl
+	 * @param requestParam
+	 * @return
+     */
+	public String getLoginUrl(Map requestParam);
 	/**
      * 该API用于获取预授权码。预授权码用于公众号授权时的第三方平台方安全验证。
      * pre_auth_code
