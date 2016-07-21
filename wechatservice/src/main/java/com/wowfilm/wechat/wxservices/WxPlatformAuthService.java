@@ -21,8 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 
-import static java.awt.SystemColor.menu;
-
 /**
  * The type Wx platform auth service.
  * 微信公众号授权服务
