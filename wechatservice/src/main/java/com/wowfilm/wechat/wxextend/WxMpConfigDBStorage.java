@@ -1,5 +1,9 @@
 package com.wowfilm.wechat.wxextend;
 
+import com.wowfilm.entity.wechat.WxMpApp;
+import com.wowfilm.wechat.content.SpringContextHolder;
+import com.wowfilm.wechat.service.WxMpAppService;
+import com.wowfilm.wechat.util.DateUtils;
 import com.wowfilm.wechatsdk.store.PlatformConfigStorage;
 import com.wowfilm.wechatsdk.store.WechatAppType;
 import com.wowfilm.wechatsdk.store.WxMpConfigStorage;
@@ -10,12 +14,22 @@ import java.io.File;
 /**
  * Created by wen on 2016/7/19 17:12.
  */
-public class WxMpConfigDBStorage implements WxMpConfigStorage{
-    private String appId;
-    private String secret;
+public class WxMpConfigDBStorage implements WxMpConfigStorage {
+    static WxMpAppService service = SpringContextHolder.getBean(WxMpAppService.class);
+    static PlatformConfigStorage platformConfigStorage = SpringContextHolder.getBean(PlatformConfigDBStorage.class, "PlatformConfigDBStorage");
+    private WxMpApp app;
+
+    public WxMpApp getApp() {
+        return app;
+    }
+
+    public void setApp(WxMpApp app) {
+        this.app = app;
+    }
+
     @Override
     public String getAccessToken() {
-        return null;
+        return app.getAuthorizerAccessToken();
     }
 
     @Override
@@ -25,22 +39,25 @@ public class WxMpConfigDBStorage implements WxMpConfigStorage{
 
     @Override
     public String getRefreshToken() {
-        return null;
+        return app.getAuthorizerRefreshToken();
     }
 
     @Override
     public boolean isAccessTokenExpired() {
-        return false;
+        return DateUtils.getCurrentDate().after(app.getTokenExpiresOut());
     }
 
     @Override
     public void expireAccessToken() {
-
+        app.setTokenExpiresOut(DateUtils.getAfterSecondDate(-100));
+        service.saveOrUpdate(app);
     }
 
     @Override
     public void updateAccessToken(String accessToken, long expiresIn) {
-
+        app.setAuthorizerAccessToken(accessToken);
+        app.setTokenExpiresOut(DateUtils.getAfterSecondDate((int) expiresIn - 200));
+        service.saveOrUpdate(app);
     }
 
     @Override
@@ -65,7 +82,7 @@ public class WxMpConfigDBStorage implements WxMpConfigStorage{
 
     @Override
     public String getAppId() {
-        return null;
+        return app.getAuthorizerAppid();
     }
 
     @Override
@@ -135,6 +152,6 @@ public class WxMpConfigDBStorage implements WxMpConfigStorage{
 
     @Override
     public PlatformConfigStorage getPlatformConfigStorage() {
-        return null;
+        return platformConfigStorage;
     }
 }

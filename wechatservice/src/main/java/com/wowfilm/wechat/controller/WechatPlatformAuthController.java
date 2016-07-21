@@ -1,6 +1,9 @@
 package com.wowfilm.wechat.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.wowfilm.wechat.wxservices.WxPlatformAuthService;
+import com.wowfilm.wechatsdk.common.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.Map;
 
 
 /**
@@ -20,6 +24,7 @@ import java.net.URLDecoder;
  */
 @Controller
 public class WechatPlatformAuthController {
+    private static Logger logger = Logger.getLogger(WechatPlatformAuthController.class);
     @Autowired
     private WxPlatformAuthService wxPlatformAuthService;
 
@@ -33,13 +38,20 @@ public class WechatPlatformAuthController {
         return "redirect:" + url;
     }
 
-    @RequestMapping(value="callback",method = RequestMethod.GET)
+    @RequestMapping(value="/auth/callback",method = RequestMethod.GET)
     public String callBack(@RequestParam(value = "auth_code") String code,
-                           @RequestParam(value = "expires_in") Integer expires,@RequestParam(required=false) String back) throws UnsupportedEncodingException {
-        String[] param = URLDecoder.decode(back,"utf-8").split("@");
-        int cinemaOrgId = Integer.parseInt(param[0].split("=")[1]);
-        String redirectUrl = param[1].split("=")[1];
-        //String msg = wxPlatformAuthService.callBack(code,expires,);
-        return "redirect:";
+                           @RequestParam(value = "expires_in") Integer expires,@RequestParam(required=false) String backParam){
+        if(StringUtils.isNotBlank(backParam)){
+            try {
+                String param = URLDecoder.decode(backParam,"utf-8");
+                Map mapParam = JSON.parseObject(param,Map.class);
+                //TODO 微信授权完成后的处理业务
+            } catch (UnsupportedEncodingException e) {
+                logger.error("解析参数错误!",e);
+            }
+        }
+
+        String msg = wxPlatformAuthService.callBack(code,expires);
+        return "redirect:/auth/info";
     }
 }
