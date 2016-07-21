@@ -18,8 +18,10 @@ import com.wowfilm.wechatsdk.entity.platform.PlatFormGetAuthorizerInfoResult;
 import com.wowfilm.wechatsdk.exception.ErrorUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.util.Map;
 
 /**
  * The type Wx platform auth service.
@@ -28,6 +30,7 @@ import java.io.File;
  * @version v1.0
  * @date Created on 2016-07-20 15:56:32
  */
+@Service
 public class WxPlatformAuthService {
     private static final Logger log = Logger.getLogger(WxPlatformAuthService.class);
 
@@ -37,12 +40,16 @@ public class WxPlatformAuthService {
     private WxMpAppService wxMpAppService;
     @Autowired
     private WechatServiceFactory wechatServiceFactory;
-    public String getAuthUrl(){
-        log.info("获取授权登录URL!");
-        String url = factory.get().getLoginUrl();
+    public String getAuthUrl(Map param){
+        log.info("获取授权URL!");
+        String url = "";
+        if(param.keySet().size()==0){
+            url = factory.get().getLoginUrl();
+        }else{
+            url = factory.get().getLoginUrl(param);
+        }
         return url;
     }
-
     public String callBack(String code, Integer expires) {
         log.info("授权回调:code :" + code + "   expires:" + expires);
         PlatFormManager formManager = factory.get();

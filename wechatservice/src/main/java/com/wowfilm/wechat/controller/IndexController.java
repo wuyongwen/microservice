@@ -3,10 +3,15 @@ package com.wowfilm.wechat.controller;
 import com.wowfilm.entity.wechat.Test;
 import com.wowfilm.entity.wechat.WxPlatformInfo;
 import com.wowfilm.wechat.service.WxPlatformInfoService;
+import com.wowfilm.wechat.util.WebAppContextInitFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import static com.wowfilm.wechat.util.WebAppContextInitFilter.getInitedWebContextFullUrl;
 import static org.apache.coyote.http11.Constants.a;
 
 /**
@@ -45,5 +50,23 @@ public class IndexController {
         System.out.println(test);
         test.setId(test.getId()+1);
         return test;
+    }
+    @RequestMapping("/testredirect")
+    public ModelAndView testRedirect(RedirectAttributes attributes){
+        ModelAndView view = new ModelAndView();
+        Test t = new Test();
+        t.setId(122);
+        t.setName("中华");
+        attributes.addAttribute("test",t);
+        view.setViewName("redirect:/toRedirect");
+        return view;
+    }
+
+    @RequestMapping("/toRedirect")
+    public String toRedirect(String test,Model model){
+        model.addAttribute("test",test);
+        String url = WebAppContextInitFilter.getInitedWebContextFullUrl();
+        model.addAttribute("url",url);
+        return "/authinfo";
     }
 }

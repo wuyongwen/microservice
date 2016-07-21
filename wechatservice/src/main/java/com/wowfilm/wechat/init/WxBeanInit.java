@@ -19,9 +19,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class WxBeanInit {
-
-    private PlatformConfigStorage platformConfigDBStorage = SpringContextHolder.getBean(PlatformConfigStorage.class, "PlatformConfigDBStorage");
-
     /**
      * 消息处理bean
      *
@@ -39,6 +36,7 @@ public class WxBeanInit {
      */
     @Bean
     public PlatFormTokenAccessor getPlatFormTokenAccessor() {
+        PlatformConfigStorage platformConfigDBStorage = SpringContextHolder.getBean(PlatformConfigStorage.class, "PlatformConfigDBStorage");
         PlatFormTokenAccessor platFormTokenAccessor = new PlatFormTokenAccessor();
         platFormTokenAccessor.setPlatformConfigStorage(platformConfigDBStorage);
         return platFormTokenAccessor;

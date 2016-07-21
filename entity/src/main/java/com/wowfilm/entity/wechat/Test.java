@@ -1,9 +1,11 @@
 package com.wowfilm.entity.wechat;
 
+import java.io.Serializable;
+
 /**
  * Created by wen on 2016/7/11.
  */
-public class Test {
+public class Test implements Serializable{
     private int id;
     private String name;
 

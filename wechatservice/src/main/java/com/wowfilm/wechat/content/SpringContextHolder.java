@@ -3,11 +3,13 @@ package com.wowfilm.wechat.content;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 /**
  * Spring上下文容器
  */
+@Component
 public class SpringContextHolder implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext;
