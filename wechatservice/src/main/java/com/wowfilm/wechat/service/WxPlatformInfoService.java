@@ -29,7 +29,7 @@ public class WxPlatformInfoService {
         if(wxPlatformInfo!=null){
             wxPlatformInfo.setComponentVerifyTicket(verifyTicketb);
             wxPlatformInfo.setTicketCreateTime(createTime);
-            save(wxPlatformInfo);
+            wxPlatformInfoMapper.update(wxPlatformInfo);
         }
     }
 
@@ -38,7 +38,7 @@ public class WxPlatformInfoService {
         if(wxPlatformInfo!=null){
             wxPlatformInfo.setComponentAccessToken(accessToken);
             wxPlatformInfo.setTokenExpiresOut(date);
-            save(wxPlatformInfo);
+            wxPlatformInfoMapper.update(wxPlatformInfo);
         }
     }
 
@@ -47,7 +47,7 @@ public class WxPlatformInfoService {
         if(wxPlatformInfo!=null){
             wxPlatformInfo.setPreAuthCode(preAuthCode);
             wxPlatformInfo.setPreAuthCodeExpiresOut(date);
-            save(wxPlatformInfo);
+            wxPlatformInfoMapper.update(wxPlatformInfo);
         }
     }
 }

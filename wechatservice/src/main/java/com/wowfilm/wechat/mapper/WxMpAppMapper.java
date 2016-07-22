@@ -9,7 +9,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface WxMpAppMapper {
     public WxMpApp findByAppId(String appId);
-    public Long save(WxMpApp app);
-    public void delete(Long id);
-    public void update(WxMpApp app,Long id);
+    public Long insert(WxMpApp app);
+    public void deleteByPrimaryKey(Long id);
+    public void deleteByAppId(String appId);
+    public void updateByPrimaryKey(WxMpApp app,Long id);
 }

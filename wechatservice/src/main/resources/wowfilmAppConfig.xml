@@ -1,0 +1,11 @@
+<xml>
+	<name>五度电影-未认证服务号</name>
+    <appId>wx7e33da89622c3fac</appId>
+    <secret>14cdfe57c776abfa5f17acd283434650</secret>
+    <token>EKfy9IkAsH</token>
+    <aesKey>cZ2sieSgSvm3OqUvAUtvh9CQlZD85FPriwupBdRQ9ob</aesKey>
+    <accessToken></accessToken>
+    <expiresTime>7200</expiresTime>
+    <openId>某个加你公众号的用户的openId</openId>
+    <oauth2redirectUri>网页授权获取用户信息回调地址</oauth2redirectUri>
+</xml>

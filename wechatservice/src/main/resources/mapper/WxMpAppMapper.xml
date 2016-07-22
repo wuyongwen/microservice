@@ -18,24 +18,114 @@
 
     <resultMap id="BaseResultMap" type="com.wowfilm.entity.wechat.WxMpApp" >
         <id column="id" property="id" jdbcType="BIGINT" />
-        <result column="AuthorizerAppid" property="authorizerappid" jdbcType="VARCHAR" />
-        <result column="Nnauthorized" property="nnauthorized" jdbcType="SMALLINT" />
-        <result column="AuthorizerAccessToken" property="authorizeraccesstoken" jdbcType="VARCHAR" />
-        <result column="TokenExpiresOut" property="tokenexpiresout" jdbcType="TIMESTAMP" />
-        <result column="AuthorizerRefreshToken" property="authorizerrefreshtoken" jdbcType="VARCHAR" />
-        <result column="FuncInfo" property="funcinfo" jdbcType="VARCHAR" />
-        <result column="NickName" property="nickname" jdbcType="VARCHAR" />
-        <result column="HeadImg" property="headimg" jdbcType="VARCHAR" />
-        <result column="ServiceTypeInfo" property="servicetypeinfo" jdbcType="INTEGER" />
-        <result column="VerifyTypeInfo" property="verifytypeinfo" jdbcType="INTEGER" />
-        <result column="UserName" property="username" jdbcType="VARCHAR" />
-        <result column="BusinessInfo" property="businessinfo" jdbcType="VARCHAR" />
-        <result column="OpenShake" property="openshake" jdbcType="VARCHAR" />
+        <result column="AuthorizerAppid" property="authorizerAppid" jdbcType="VARCHAR" />
+        <result column="Unauthorized" property="unauthorized" jdbcType="SMALLINT" />
+        <result column="AuthorizerAccessToken" property="authorizerAccessToken" jdbcType="VARCHAR" />
+        <result column="TokenExpiresOut" property="tokenExpiresOut" jdbcType="TIMESTAMP" />
+        <result column="AuthorizerRefreshToken" property="authorizerRefreshToken" jdbcType="VARCHAR" />
+        <result column="FuncInfo" property="funcInfo" jdbcType="VARCHAR" />
+        <result column="NickName" property="nickName" jdbcType="VARCHAR" />
+        <result column="HeadImg" property="headImg" jdbcType="VARCHAR" />
+        <result column="ServiceTypeInfo" property="serviceTypeInfo" jdbcType="INTEGER" />
+        <result column="VerifyTypeInfo" property="verifyTypeInfo" jdbcType="INTEGER" />
+        <result column="UserName" property="userName" jdbcType="VARCHAR" />
+        <result column="BusinessInfo" property="businessInfo" jdbcType="VARCHAR" />
+        <result column="OpenShake" property="openShake" jdbcType="VARCHAR" />
         <result column="Alias" property="alias" jdbcType="VARCHAR" />
-        <result column="QrcodeUrl" property="qrcodeurl" jdbcType="VARCHAR" />
-        <result column="LocalqrcodePath" property="localqrcodepath" jdbcType="VARCHAR" />
-        <result column="IsMenuOpern" property="ismenuopern" jdbcType="SMALLINT" />
-        <result column="SelfMenuInfo" property="selfmenuinfo" jdbcType="LONGVARCHAR" />
-        <result column="ConfMenuInfo" property="confmenuinfo" jdbcType="LONGVARCHAR" />
+        <result column="QrcodeUrl" property="qrcodeUrl" jdbcType="VARCHAR" />
+        <result column="LocalqrcodePath" property="localqrcodePath" jdbcType="VARCHAR" />
+        <result column="IsMenuOpern" property="isMenuOpern" jdbcType="SMALLINT" />
+        <result column="SelfMenuInfo" property="selfMenuInfo" jdbcType="LONGVARCHAR" />
+        <result column="ConfMenuInfo" property="confMenuInfo" jdbcType="LONGVARCHAR" />
     </resultMap>
+    <select id="findByAppId" resultType="WxMpApp">
+        select * from WxMpApp where AuthorizerAppid = #{appId}
+    </select>
+    <insert id="insert" parameterType="com.wowfilm.entity.wechat.WxMpApp" useGeneratedKeys="true">
+        insert into WxMpApp (id, AuthorizerAppid, Unauthorized,
+        AuthorizerAccessToken, TokenExpiresOut,
+        AuthorizerRefreshToken, FuncInfo, NickName,
+        HeadImg, ServiceTypeInfo, VerifyTypeInfo,
+        UserName, BusinessInfo, OpenShake,
+        Alias, QrcodeUrl, LocalqrcodePath,
+        IsMenuOpern, SelfMenuInfo, ConfMenuInfo
+        )
+        values (#{id,jdbcType=BIGINT}, #{authorizerAppid,jdbcType=VARCHAR}, #{unauthorized,jdbcType=SMALLINT},
+        #{authorizerAccessToken,jdbcType=VARCHAR}, #{tokenExpiresOut,jdbcType=TIMESTAMP},
+        #{authorizerRefreshToken,jdbcType=VARCHAR}, #{funcInfo,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR},
+        #{headImg,jdbcType=VARCHAR}, #{serviceTypeInfo,jdbcType=INTEGER}, #{verifyTypeInfo,jdbcType=INTEGER},
+        #{userName,jdbcType=VARCHAR}, #{businessInfo,jdbcType=VARCHAR}, #{openShake,jdbcType=VARCHAR},
+        #{alias,jdbcType=VARCHAR}, #{qrcodeUrl,jdbcType=VARCHAR}, #{localqrcodePath,jdbcType=VARCHAR},
+        #{isMenuOpern,jdbcType=SMALLINT}, #{selfMenuInfo,jdbcType=LONGVARCHAR}, #{confMenuInfo,jdbcType=LONGVARCHAR}
+        )
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.wowfilm.entity.wechat.WxMpApp" >
+        update WxMpApp
+        <set >
+            <if test="authorizerappid != null" >
+                AuthorizerAppid = #{authorizerAppid,jdbcType=VARCHAR},
+            </if>
+            <if test="unauthorized != null" >
+                Unauthorized = #{unauthorized,jdbcType=SMALLINT},
+            </if>
+            <if test="authorizeraccesstoken != null" >
+                AuthorizerAccessToken = #{authorizerAccessToken,jdbcType=VARCHAR},
+            </if>
+            <if test="tokenexpiresout != null" >
+                TokenExpiresOut = #{tokenExpiresOut,jdbcType=TIMESTAMP},
+            </if>
+            <if test="authorizerrefreshtoken != null" >
+                AuthorizerRefreshToken = #{authorizerRefreshToken,jdbcType=VARCHAR},
+            </if>
+            <if test="funcinfo != null" >
+                FuncInfo = #{funcInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null" >
+                NickName = #{nickName,jdbcType=VARCHAR},
+            </if>
+            <if test="headimg != null" >
+                HeadImg = #{headImg,jdbcType=VARCHAR},
+            </if>
+            <if test="servicetypeinfo != null" >
+                ServiceTypeInfo = #{serviceTypeInfo,jdbcType=INTEGER},
+            </if>
+            <if test="verifytypeinfo != null" >
+                VerifyTypeInfo = #{verifyTypeInfo,jdbcType=INTEGER},
+            </if>
+            <if test="username != null" >
+                UserName = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="businessinfo != null" >
+                BusinessInfo = #{businessInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="openshake != null" >
+                OpenShake = #{openShake,jdbcType=VARCHAR},
+            </if>
+            <if test="alias != null" >
+                Alias = #{alias,jdbcType=VARCHAR},
+            </if>
+            <if test="qrcodeurl != null" >
+                QrcodeUrl = #{qrcodeUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="localqrcodepath != null" >
+                LocalqrcodePath = #{localqrcodePath,jdbcType=VARCHAR},
+            </if>
+            <if test="ismenuopern != null" >
+                IsMenuOpern = #{isMenuOpern,jdbcType=SMALLINT},
+            </if>
+            <if test="selfmenuinfo != null" >
+                SelfMenuInfo = #{selfMenuInfo,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="confmenuinfo != null" >
+                ConfMenuInfo = #{confMenuInfo,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from WxMpApp where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <delete id="deleteByAppId" parameterType="java.lang.String" >
+        delete from WxMpApp where AuthorizerAppid = #{appId}
+    </delete>
 </mapper>

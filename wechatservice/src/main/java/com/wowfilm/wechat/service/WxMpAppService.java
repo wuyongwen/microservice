@@ -19,19 +19,25 @@ public class WxMpAppService {
     }
 
     public void update(WxMpApp app) {
-        wxMpAppMapper.update(app,app.getId());
+        wxMpAppMapper.updateByPrimaryKey(app,app.getId());
     }
 
     public Long save(WxMpApp app){
-        return wxMpAppMapper.save(app);
+        return wxMpAppMapper.insert(app);
     }
 
     public Long saveOrUpdate(WxMpApp app){
         if(app.getId()!=null && app.getId()>0){
-            wxMpAppMapper.update(app,app.getId());
+            wxMpAppMapper.updateByPrimaryKey(app,app.getId());
             return app.getId();
         }else{
-            return wxMpAppMapper.save(app);
+            return wxMpAppMapper.insert(app);
         }
+    }
+    public void deleteById(Long id){
+        wxMpAppMapper.deleteByPrimaryKey(id);
+    }
+    public void deleteByAppId(String appId){
+        wxMpAppMapper.deleteByAppId(appId);
     }
 }
