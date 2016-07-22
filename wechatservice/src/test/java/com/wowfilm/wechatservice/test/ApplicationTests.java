@@ -10,9 +10,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.io.Serializable;
 
 /**
  * Created by wen on 2016/7/22 11:21.
@@ -24,6 +23,7 @@ public class ApplicationTests {
     @Autowired
     private WxMpAppService service;
     @Test
+    @Rollback
     public void testAdd(){
         WxMpApp app = new WxMpApp();
         app.setAuthorizerAppid("xb2345234123");

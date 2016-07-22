@@ -1,6 +1,5 @@
 package com.wowfilm.client;
 
-import com.sun.xml.internal.ws.api.FeatureConstructor;
 import com.wowfilm.entity.wechat.Test;
 import feign.Headers;
 import feign.Param;

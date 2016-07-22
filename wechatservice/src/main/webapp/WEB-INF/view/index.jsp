@@ -9,6 +9,9 @@
     <c:if test="${age<18}">
        abc
     </c:if>
+
 </span>
+<h3><span>appId:</span>${app.authorizerAppid}</h3>
+<h3><span>tokenExpiresOut:</span>${app.tokenExpiresOut}</h3>
 </body>
 </html>

@@ -17,6 +17,7 @@
 <configuration>
     <typeAliases>
         <package name="com.wowfilm.entity"/>
+        <!--<package name="biz.entgroup.framework.entity"/>-->
     </typeAliases>
     <mappers>
         <mapper resource="mapper/WxPlatformInfoMapper.xml"/>

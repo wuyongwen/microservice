@@ -13,14 +13,35 @@ import java.util.Date;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class WxPlatformInfo {
     private Long id;
+    /**
+     * 第三方开发平台appId
+     */
     private String appId;
+    /**
+     * 微信推送的验证码
+     */
     private String componentVerifyTicket;
+    /**
+     * 验证码推送时间
+     */
     @JsonFormat(pattern = "yyyy-MM-dd HH:MM:ss",timezone="GMT+8")
     private Date ticketCreateTime;
+    /**
+     * 平台token
+     */
     private String componentAccessToken;
+    /**
+     * 平台token失效时间
+     */
     @JsonFormat(pattern = "yyyy-MM-dd HH:MM:ss",timezone="GMT+8")
     private Date tokenExpiresOut;
+    /**
+     * 平台预授权码
+     */
     private String preAuthCode;
+    /**
+     * 平台预授权码失效时间
+     */
     @JsonFormat(pattern = "yyyy-MM-dd HH:MM:ss",timezone="GMT+8")
     private Date preAuthCodeExpiresOut;
 

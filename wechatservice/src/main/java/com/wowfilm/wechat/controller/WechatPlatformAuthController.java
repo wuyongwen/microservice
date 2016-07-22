@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
@@ -62,8 +63,17 @@ public class WechatPlatformAuthController {
         attributes.addAttribute("msg",msg);
         return "redirect:/auth/info";
     }
+
+    /**
+     * 授权成功回调到微信服务内部url,业务系统展示微信服务内的页面
+     * @param msg
+     * @return
+     */
     @RequestMapping("/auth/info")
-    public String authInfo(String msg){
-        return "authinfo";
+    public ModelAndView authInfo(String msg){
+        ModelAndView view = new ModelAndView();
+        view.addObject("msg",msg);
+        view.setViewName("authinfo");
+        return view;
     }
 }
