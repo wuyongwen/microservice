@@ -24,7 +24,7 @@
         <module>wechat-sdk</module>
     </modules>
 
-    <repositories>
+   <!-- <repositories>
             <repository>
                 <id>central</id>
                 <name>nexus central</name>
@@ -36,7 +36,7 @@
                     <enabled>true</enabled>
                 </snapshots>
             </repository>
-        </repositories>
+        </repositories>-->
 
         <pluginRepositories>
             <pluginRepository>

@@ -39,7 +39,6 @@ public class WechatPlatformMessageController {
 	@RequestMapping(value = { "/wx"})
 	public void wechat(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-
         process(req, resp ,null);
 	}
 

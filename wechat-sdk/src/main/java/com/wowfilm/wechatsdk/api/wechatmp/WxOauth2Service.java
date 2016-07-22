@@ -72,15 +72,7 @@ public class WxOauth2Service extends WxBaseService {
         url += "&code=" + code;
         url += "&grant_type=authorization_code";
 
-        try {
-            RequestExecutor<String, String> executor = new SimpleGetRequestExecutor();
-            String responseText = executor.execute(tokenAccessor.getHttpclient(), tokenAccessor.getHttpProxy(), url, null);
-            return WxMpOAuth2AccessToken.fromJson(responseText);
-        } catch (ClientProtocolException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return getWxMpOAuth2AccessToken(url);
     }
 
     /**
@@ -97,6 +89,10 @@ public class WxOauth2Service extends WxBaseService {
         url += "&grant_type=refresh_token";
         url += "&refresh_token=" + refreshToken;
 
+        return getWxMpOAuth2AccessToken(url);
+    }
+
+    private WxMpOAuth2AccessToken getWxMpOAuth2AccessToken(String url) {
         try {
             RequestExecutor<String, String> executor = new SimpleGetRequestExecutor();
             String responseText = executor.execute(tokenAccessor.getHttpclient(), tokenAccessor.getHttpProxy(), url, null);

@@ -39,14 +39,23 @@ public class WechatPlatformAuthController {
      * 获取扫码授权URL
      * @return
      */
-    @RequestMapping("/doAuth")
+    @RequestMapping("/platform/doAuth")
     @ResponseBody
     public String doAuth(HttpServletRequest request){
         String url = wxPlatformAuthService.getAuthUrl(HttpUtils.decodeParams(request));
         return url;
     }
 
-    @RequestMapping(value="/auth/callback",method = RequestMethod.GET)
+    /**
+     * 扫码授权回调路径
+     * 获取公众号信息,防止重复提交,重定向到info页面
+     * @param code       the code
+     * @param expires    the expires
+     * @param backParam  the back param
+     * @param attributes the attributes
+     * @return the string
+     */
+    @RequestMapping(value="/platform/auth/callback",method = RequestMethod.GET)
     public String callBack(@RequestParam(value = "auth_code") String code,
                            @RequestParam(value = "expires_in") Integer expires, @RequestParam(required=false) String backParam, RedirectAttributes attributes){
         if(StringUtils.isNotBlank(backParam)){
@@ -69,7 +78,7 @@ public class WechatPlatformAuthController {
      * @param msg
      * @return
      */
-    @RequestMapping("/auth/info")
+    @RequestMapping("/platform//auth/info")
     public ModelAndView authInfo(String msg){
         ModelAndView view = new ModelAndView();
         view.addObject("msg",msg);

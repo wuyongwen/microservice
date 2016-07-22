@@ -22,7 +22,7 @@ public class WechatServiceFactory {
     private static Logger log = LoggerFactory.getLogger(WechatServiceFactory.class);
     @Autowired
     private WxMpAppService wxMpAppService;
-
+    private WxMpInMemoryConfigStorage defaultAppConfig;
     /**
      * 获取授权公众号
      * @param appId
@@ -55,22 +55,28 @@ public class WechatServiceFactory {
      * @return
      */
     public WxMpConfigStorage configure() {
-        InputStream in = null;
-        try {
-            in = this.getClass().getClassLoader().getResourceAsStream("wowfilmAppConfig.xml");
-            WxMpInMemoryConfigStorage config = XmlUtil.fromXml(WxMpInMemoryConfigStorage.class, in);
-            log.info("当前使用的公众号为:appId:{},appsecret{}" , config.getAppId(),config.getSecret() );
-            return config;
-        } catch (Exception e) {
-            log.error("解析wowfilmAppConfig出错!无法获取默认的服务号配置!",e);
-            throw new RuntimeException("获取默认服务号出错.",e);
-        } finally {
-            if(in != null){
-                try {
-                    in.close();
-                } catch (Exception e) {
+        if(defaultAppConfig == null){
+            synchronized (this){
+                if(defaultAppConfig == null){
+                    InputStream in = null;
+                    try {
+                        in = this.getClass().getClassLoader().getResourceAsStream("wowfilmAppConfig.xml");
+                        defaultAppConfig = XmlUtil.fromXml(WxMpInMemoryConfigStorage.class, in);
+                        log.info("当前使用的公众号为:appId:{},appsecret{}" , defaultAppConfig.getAppId(),defaultAppConfig.getSecret() );
+                    } catch (Exception e) {
+                        log.error("解析wowfilmAppConfig出错!无法获取默认的服务号配置!",e);
+                        throw new RuntimeException("获取默认服务号出错.",e);
+                    } finally {
+                        if(in != null){
+                            try {
+                                in.close();
+                            } catch (Exception e) {
+                            }
+                        }
+                    }
                 }
             }
         }
+        return defaultAppConfig;
     }
 }

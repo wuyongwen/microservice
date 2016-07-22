@@ -20,7 +20,9 @@
         <!--<package name="biz.entgroup.framework.entity"/>-->
     </typeAliases>
     <mappers>
-        <mapper resource="mapper/WxPlatformInfoMapper.xml"/>
-        <mapper resource="mapper/WxMpAppMapper.xml"/>
+        <package name="com.wowfilm.wechat.mapper"/>
+        <package name="biz.entgroup.framework.mapper"/>
+        <!--<mapper resource="mapper/WxPlatformInfoMapper.xml"/>
+        <mapper resource="mapper/WxMpAppMapper.xml"/>-->
     </mappers>
 </configuration>
