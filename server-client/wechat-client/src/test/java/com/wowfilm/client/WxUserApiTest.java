@@ -1,6 +1,7 @@
 package com.wowfilm.client;
 
 import com.wowfilm.client.api.UserInfoApi;
+import com.wowfilm.entity.request.AuthUrlParam;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +20,7 @@ public class WxUserApiTest {
     }
     @Test
     public void testAuth(){
-        String url = api.getAuthUrl(new UserInfoApi.AuthUrlParam("localhost","state","basee"));
+        String url = api.getAuthUrl(new AuthUrlParam("localhost","state","basee"));
         log.info(url);
     }
     @Test
