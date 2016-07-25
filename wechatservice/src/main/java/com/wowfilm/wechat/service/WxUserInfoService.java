@@ -72,7 +72,7 @@ public class WxUserInfoService {
         }
     }
     private void putInfo(WxMpUser user, Userinfo userinfo) {
-        userinfo.setName(user.getNickname());
+        userinfo.setNickname(user.getNickname());
         userinfo.setOpenid(user.getOpenId());
         userinfo.setCity(user.getCity());
         userinfo.setCountry(user.getCountry());

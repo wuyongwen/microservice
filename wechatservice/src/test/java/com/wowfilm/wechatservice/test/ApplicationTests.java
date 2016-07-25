@@ -1,13 +1,16 @@
 package com.wowfilm.wechatservice.test;
 
+import biz.entgroup.framework.entity.Userinfo;
 import com.alibaba.fastjson.JSON;
 import com.wowfilm.entity.wechat.WxMpApp;
 import com.wowfilm.wechat.Start;
 import com.wowfilm.wechat.service.WxMpAppService;
+import com.wowfilm.wechat.service.WxUserInfoService;
 import com.wowfilm.wechat.util.DateUtils;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.annotation.Rollback;
@@ -35,5 +38,16 @@ public class ApplicationTests {
     public void testGet(){
         WxMpApp app = service.findByAppId("xb2345234123");
         logger.info(JSON.toJSONString(app));
+    }
+    @Autowired
+    private WxUserInfoService wxUserInfoService;
+    @Test
+    public void testUserInfo(){
+        Userinfo user = new Userinfo();
+        user.setNickname("warden");
+        user.setSex(1);
+        user.setHeadimg("www.baidu.com");
+        user.setAge(22);
+        wxUserInfoService.saveOrUpdate(user);
     }
 }

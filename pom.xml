@@ -24,43 +24,57 @@
         <module>wechat-sdk</module>
     </modules>
 
-   <!-- <repositories>
-            <repository>
-                <id>central</id>
-                <name>nexus central</name>
-                <url>http://10.10.11.17:8081/nexus/content/groups/public/</url>
-                <releases>
-                    <enabled>true</enabled>
-                </releases>
-                <snapshots>
-                    <enabled>true</enabled>
-                </snapshots>
-            </repository>
-        </repositories>-->
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>nexus central</name>
+            <url>http://10.10.11.17:8081/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
-        <pluginRepositories>
-            <pluginRepository>
-                <id>central</id>
-                <name>nexus central</name>
-                <url>http://10.10.11.17:8081/nexus/content/groups/public/</url>
-                <releases>
-                    <enabled>true</enabled>
-                </releases>
-                <snapshots>
-                    <enabled>true</enabled>
-                </snapshots>
-            </pluginRepository>
-        </pluginRepositories>
-        <distributionManagement>
-            <repository>
-                <id>releases</id>
-                <url>http://10.10.11.17:8081/nexus/content/repositories/releases/</url>
-            </repository>
-            <snapshotRepository>
-                <id>snapshots</id>
-                <url>http://10.10.11.17:8081/nexus/content/repositories/snapshots/</url>
-            </snapshotRepository>
-        </distributionManagement>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <name>nexus central</name>
+            <url>http://10.10.11.17:8081/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>http://10.10.11.17:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://10.10.11.17:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>

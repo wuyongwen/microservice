@@ -7,6 +7,8 @@ import feign.codec.Encoder;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
 
+import static javafx.scene.input.KeyCode.T;
+
 
 /**
  * 获取封装的api接口工厂
@@ -31,12 +33,19 @@ public class ApiFactory {
         return factory;
     }
 
-    public <T> T api(Class<T> apiType) {
+    public <T> T jsonApi(Class<T> apiType) {
         return Feign.builder()
                 .decoder(decoder)
                 .encoder(encoder)
                 .logger(new Logger.ErrorLogger())
-                .logLevel(Logger.Level.BASIC)
+                .logLevel(Logger.Level.FULL)
+                .target(apiType, serverRoot);
+    }
+    public <T> T defaultApi(Class<T> apiType){
+        return Feign.builder()
+                .logger(new Logger.ErrorLogger())
+                .encoder(encoder)
+                .logLevel(Logger.Level.FULL)
                 .target(apiType, serverRoot);
     }
 }
