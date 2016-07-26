@@ -33,7 +33,7 @@ public class WechatUserAuthController {
      * @return the auth url
      */
     @RequestMapping("/wxuser/authurl")
-    public Map<String,String> getAuthUrl(@RequestParam("authparm") AuthUrlParam authParm) {
+    public Map<String,String> getAuthUrl(@RequestBody AuthUrlParam authParm) {
         Map model = new HashMap<String,String>();
         String url = wxUserInfoService.getOauthUrl(authParm.getRedirectUrl(),authParm.getState(),authParm.getScope());
         model.put("url",url);

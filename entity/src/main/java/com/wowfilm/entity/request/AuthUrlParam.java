@@ -37,5 +37,7 @@ public class AuthUrlParam {
         this.scope = scope;
         this.state = state;
     }
-
+    public AuthUrlParam(){
+        super();
+    }
 }
