@@ -10,6 +10,12 @@ import org.apache.ibatis.annotations.Select;
  */
 @Mapper
 public interface WxUserMapper extends UserinfoMapper{
+    /**
+     * Find by open id userinfo.
+     *
+     * @param openId the open id
+     * @return the userinfo
+     */
     @Select("select * from UserInfo where openid = #{openid}")
     public Userinfo findByOpenId(String openId);
 }

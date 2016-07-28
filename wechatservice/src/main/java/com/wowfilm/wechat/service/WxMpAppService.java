@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 /**
  * Created by wen on 2016/7/21 10:47.
  */
@@ -40,4 +42,6 @@ public class WxMpAppService {
     public void deleteByAppId(String appId){
         wxMpAppMapper.deleteByAppId(appId);
     }
+
+
 }

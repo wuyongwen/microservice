@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * Created by wen on 2016/7/20 10:41.
  */
-@Mapper
+
 
 public interface WxMpAppMapper {
     public WxMpApp findByAppId(String appId);

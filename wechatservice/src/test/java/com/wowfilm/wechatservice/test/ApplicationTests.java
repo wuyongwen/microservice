@@ -10,7 +10,6 @@ import com.wowfilm.wechat.util.DateUtils;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.annotation.Rollback;
@@ -50,4 +49,13 @@ public class ApplicationTests {
         user.setAge(22);
         wxUserInfoService.saveOrUpdate(user);
     }
+    @Test
+    public void testAdd2() {
+      /*  SqlSession openSession = factory.openSession();
+        WxPublishNewsMapper mapper = openSession.getMapper(WxPublishNewsMapper.class);
+        int count = mapper.checkCount(null,null,null);
+        openSession.commit();
+        openSession.close();*/
+    }
+
 }
