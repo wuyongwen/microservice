@@ -24,7 +24,7 @@ public class WxPublishNewsService {
         WxMpApp wxMpApp = wxMpAppService.findByAppId(appId);
         int type = wxMpApp.getServiceTypeInfo();
         Date[] bettenDate = getBettenDate(publishTime,type);
-        int count = mapper.checkCount(bettenDate,wxMpApp.getAuthorizerAppid(),new Integer[]{WxNewsStatus.C.code(),WxNewsStatus.D.code(),WxNewsStatus.I.code()});
+        int count = mapper.checkCount(bettenDate[0],bettenDate[1],wxMpApp.getAuthorizerAppid(),new int[]{WxNewsStatus.C.code(),WxNewsStatus.D.code(),WxNewsStatus.I.code()});
 
         if(type==1){
             return count<1;
@@ -33,6 +33,21 @@ public class WxPublishNewsService {
         }
         return false;
     }
+
+    private String toIn(Integer... code) {
+        StringBuffer sb = new StringBuffer();
+        for (Integer i : code){
+            sb.append(i);
+            sb.append(",");
+        }
+        if(sb.toString().endsWith(",")){
+            String in = sb.substring(0,sb.lastIndexOf(","));
+            in = "(" + in +")";
+            return in;
+        }
+        return sb.toString();
+    }
+
     private Date[] getBettenDate(Date publishTime, int type) {
         // 订阅号  一天内只能发送一个
         if(type==1 || type == 0){

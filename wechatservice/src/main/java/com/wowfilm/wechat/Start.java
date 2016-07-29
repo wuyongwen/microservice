@@ -1,7 +1,9 @@
 package com.wowfilm.wechat;
 
+import com.wowfilm.wechat.mapper.WxPublishNewsMapper;
 import org.apache.log4j.Logger;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
@@ -20,4 +22,5 @@ public class Start extends SpringBootServletInitializer {
         logger.info("SPRING VERSION: " + SpringVersion.getVersion());
         SpringApplication.run(Start.class, args);
     }
+
 }

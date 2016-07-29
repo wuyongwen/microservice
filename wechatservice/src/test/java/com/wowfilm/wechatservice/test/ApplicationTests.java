@@ -4,13 +4,16 @@ import biz.entgroup.framework.entity.Userinfo;
 import com.alibaba.fastjson.JSON;
 import com.wowfilm.entity.wechat.WxMpApp;
 import com.wowfilm.wechat.Start;
+import com.wowfilm.wechat.mapper.WxPublishNewsMapper;
 import com.wowfilm.wechat.service.WxMpAppService;
+import com.wowfilm.wechat.service.WxPublishNewsService;
 import com.wowfilm.wechat.service.WxUserInfoService;
 import com.wowfilm.wechat.util.DateUtils;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -49,13 +52,10 @@ public class ApplicationTests {
         user.setAge(22);
         wxUserInfoService.saveOrUpdate(user);
     }
+    @Autowired
+    WxPublishNewsService mapper;
     @Test
     public void testAdd2() {
-      /*  SqlSession openSession = factory.openSession();
-        WxPublishNewsMapper mapper = openSession.getMapper(WxPublishNewsMapper.class);
-        int count = mapper.checkCount(null,null,null);
-        openSession.commit();
-        openSession.close();*/
+        mapper.outOfLimit("xb2345234123",DateUtils.getCurrentDate());
     }
-
 }
