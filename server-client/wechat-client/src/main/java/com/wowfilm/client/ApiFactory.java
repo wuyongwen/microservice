@@ -7,9 +7,6 @@ import feign.codec.Encoder;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
 
-import static javafx.scene.input.KeyCode.T;
-
-
 /**
  * 获取封装的api接口工厂
  * 传入服务地址
